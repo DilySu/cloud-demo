@@ -28,7 +28,7 @@ public class OrderService {
     private RestTemplate restTemplate;   // 启动类 或者 Config 中 要注入bean
     @Autowired
     private DiscoveryClient discoveryClient;
-    @Autowired(required = false)
+    @Autowired(required = false)    // 启用该方式时，参数改为 true
     private LoadBalancerClient loadBalancerClient;
 
 
