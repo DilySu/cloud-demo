@@ -21,10 +21,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--        eureka client-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+        <!--        </dependency>-->
         <!--        优雅停服-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,13 +41,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        ribbon-->
+        <!--        ribbon 点对点直连 和 局部负载均衡 不可用-->
         <dependency>
             <groupId>com.netflix.ribbon</groupId>
             <artifactId>ribbon-loadbalancer</artifactId>
-            <version>2.3.0</version>
+            <version>2.7.18</version>
             <scope>compile</scope>
         </dependency>
+        <!--        ribbon 点对点直连 和 局部负载均衡，配置文件里写必须用这个-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
+<!--            <version>2.2.10.RELEASE</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

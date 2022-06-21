@@ -7,7 +7,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-//@EnableEurekaClient 如果配置了注册中心，则会默认开启，无需使用该注解
+//@EnableEurekaClient //如果配置了注册中心，则会默认开启，无需使用该注解
 @SpringBootApplication
 public class ConsumerApplication {
 

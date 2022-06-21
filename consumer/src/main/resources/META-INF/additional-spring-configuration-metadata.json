@@ -1,9 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "provider.ribbon.NFLoadBalancerRuleClassName",
-      "type": "java.lang.String",
-      "description": "Description for provider.ribbon.NFLoadBalancerRuleClassName."
-    }
-  ]
-}

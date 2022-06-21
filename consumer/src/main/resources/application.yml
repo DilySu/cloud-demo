@@ -2,10 +2,10 @@ spring:
   application:
     name: consumer                 # 应用名称
   # 安全认证
-#  security:
-#    user:
-#      name: root       # 用户名
-#      password: 123456 # 密码
+  security:
+    user:
+      name: root       # 用户名
+      password: 123456 # 密码
 
 server:
   port: 6060                  # 端口
@@ -20,12 +20,12 @@ eureka:
   client:
     register-with-eureka: true  # 是否将自己注册到注册中心，默认 true ，集群时要为 true，相互注册
     fetch-registry: true        # 是否从注册中线获取注册信息，默认为 true
-    service-url:                 # 注册中心对外暴露的注册地址
+    service-url: # 注册中心对外暴露的注册地址
       defaultZone: http://root:123456@localhost:8762/eureka/,http://root:123456@localhost:8761/eureka/
-#
-#  server:
-#    enable-self-preservation: false # true 开启自我保护， false 关闭自我保护
-#    eviction-interval-timer-in-ms: 60000 # 清除隔离（单位：毫秒） 默认 60 * 1000
+  #
+  server:
+    enable-self-preservation: false # true 开启自我保护， false 关闭自我保护
+    eviction-interval-timer-in-ms: 60000 # 清除隔离（单位：毫秒） 默认 60 * 1000
 
 # 度量指标监控与健康检查
 management:
@@ -38,6 +38,13 @@ management:
       enabled: true # 开启 shutdown 实现优雅停服
 
 # 负载均衡 局部策略
-provider:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#provider:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+## 点对点直连
+#    # 指定具体服务列表
+#    listOfServers: http://localhost:7070,http://localhost:7071
+## 关闭 Eureka 实现点对点直连
+#ribbon:
+#  eureka:
+#    enabled: false # false: 关闭，true: 开启

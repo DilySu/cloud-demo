@@ -28,13 +28,13 @@ public class OrderService {
     private RestTemplate restTemplate;   // 启动类 或者 Config 中 要注入bean
     @Autowired
     private DiscoveryClient discoveryClient;
-    @Autowired
+    @Autowired(required = false)
     private LoadBalancerClient loadBalancerClient;
 
 
     public Order getList() {
-//        return new Order(1, "202020202020", selectProductList("provider", "/product/list"));
-        return new Order(1, "202020202020", selectProductListWithBalancer("provider", "/product/list"));
+        return new Order(1, "202020202020", selectProductList("provider", "/product/list"));
+//        return new Order(1, "202020202020", selectProductListWithBalancer("provider", "/product/list"));
 //        return new Order(1, "202020202020", selectProductListWithBalanced("provider", "/product/list"));
     }
 
