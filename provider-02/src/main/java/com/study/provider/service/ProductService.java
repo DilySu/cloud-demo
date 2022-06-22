@@ -23,4 +23,8 @@ public class ProductService {
                 new Production(1, "Mac mini 2022", 2, 10000.0)
         );
     }
+
+    public Production getProduction(Integer id) {
+        return new Production(id, "Mac mini 2022", 2, 10000.0);
+    }
 }

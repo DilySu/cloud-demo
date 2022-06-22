@@ -8,7 +8,7 @@ spring:
       password: 123456 # 密码
 
 server:
-  port: 6060                  # 端口
+  port: 6061                  # 端口
 
 # 注册中心
 eureka:

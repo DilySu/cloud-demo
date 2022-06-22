@@ -3,7 +3,9 @@ package com.study.provider.controller;
 import com.study.provider.entity.Production;
 import com.study.provider.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +24,17 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/list")
-    public List<Production> getProductList(){
+    public List<Production> getProductList() {
         return productService.getList();
+    }
+
+    @RequestMapping("/getProduction")
+    public Production getProduction(@RequestParam Integer id) {
+        return productService.getProduction(id);
+    }
+
+    @RequestMapping("/getData/{name}/{id}")
+    public String getData(@PathVariable("id") Integer id, @PathVariable("name") String name) {
+        return id + name;
     }
 }

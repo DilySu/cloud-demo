@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,13 +32,11 @@ public class OrderService {
     @Autowired(required = false)    // 启用该方式时，参数改为 true
     private LoadBalancerClient loadBalancerClient;
 
-
     public Order getList() {
         return new Order(1, "202020202020", selectProductList("provider", "/product/list"));
 //        return new Order(1, "202020202020", selectProductListWithBalancer("provider", "/product/list"));
 //        return new Order(1, "202020202020", selectProductListWithBalanced("provider", "/product/list"));
     }
-
 
     /**
      * 跨服务调用
@@ -121,4 +120,5 @@ public class OrderService {
                 }
         ).getBody();
     }
+
 }
