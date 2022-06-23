@@ -9,7 +9,7 @@
         <relativePath>../parent</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>eureka-provider-02</artifactId>
+    <artifactId>provider-eureka-02</artifactId>
     <packaging>${packaging.type}</packaging>
 
     <properties>

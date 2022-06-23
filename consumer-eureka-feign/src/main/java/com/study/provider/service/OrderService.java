@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2022-06-17 星期五
@@ -30,5 +31,7 @@ public class OrderService {
     public Order getList() {
         return new Order(1, "202020202020", List.of(productionService.getProduction(1)));
     }
-
+    public Map createProduct(Object product) {
+        return productionService.createProduction(product);
+    }
 }

@@ -4,7 +4,9 @@ import com.study.provider.entity.Production;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2022-06-17 星期五
@@ -25,5 +27,14 @@ public class ProductService {
 
     public Production getProduction(Integer id) {
         return new Production(id, "Mac mini 2022", 2, 10000.0);
+    }
+
+    public Map<Object, Object> createProduction(Production production) {
+        return new HashMap<Object, Object>() {
+            {
+                put("code", 200);
+                put("message", "新增成功");
+            }
+        };
     }
 }
