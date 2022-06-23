@@ -7,9 +7,6 @@ spring:
       name: root       # 用户名
       password: 123456 # 密码
 
-server:
-  port: 6061                  # 端口
-
 # 注册中心
 eureka:
   instance:
@@ -37,14 +34,20 @@ management:
     shutdown:
       enabled: true # 开启 shutdown 实现优雅停服
 
-# 负载均衡 局部策略
-provider:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-## 点对点直连
-#    # 指定具体服务列表
-#    listOfServers: http://localhost:7070,http://localhost:7071
-## 关闭 Eureka 实现点对点直连
-#ribbon:
-#  eureka:
-#    enabled: false # false: 关闭，true: 开启
+server:
+  port: 6061                  # 端口
+  # 全局开启压缩
+  compression:
+    enabled: true
+    # 配置压缩支持的 MIME TYPE
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+# 局部 通过 Feign 到 Provider 的请求 进行 Gzip 压缩
+feign:
+  compression:
+    request:
+      min-request-size: 512  # 配置压缩数据大小的最小阈值，默认 2048
+      mime-types: text/xml,application/xml,application/json  # 配置压缩文件支持的 MIME TYPE
+      enabled: true                # 请求是否开启 Gzip 压缩
+    response:
+      enabled: true                # 响应是否开启 Gzip 压缩

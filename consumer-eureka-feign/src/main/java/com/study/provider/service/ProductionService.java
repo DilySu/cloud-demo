@@ -14,7 +14,7 @@ import java.util.Map;
  * Author: Dily_Su
  * Remark:
  */
-@FeignClient("provider")
+@FeignClient("provider-eureka")
 public interface ProductionService {
     @RequestMapping("/product/getProduction")
     Object getProduction(@RequestParam Integer id);
