@@ -1,6 +1,6 @@
 spring:
   application:
-    name: provider-eureka                # 应用名称
+    name: provider                # 应用名称
   # 安全认证
 #  security:
 #    user:

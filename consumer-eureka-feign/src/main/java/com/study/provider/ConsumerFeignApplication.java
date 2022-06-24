@@ -1,6 +1,6 @@
 package com.study.provider;
 
-import com.netflix.loadbalancer.RandomRule;
+import feign.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -15,6 +15,11 @@ public class ConsumerFeignApplication {
 //    @Bean
 //    public RandomRule randomRule() {
 //        return new RandomRule();
+//    }
+
+//    @Bean
+//    public Logger.Level getLog(){
+//        return Logger.Level.FULL;
 //    }
 
     public static void main(String[] args) {

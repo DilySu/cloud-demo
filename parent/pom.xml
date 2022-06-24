@@ -20,6 +20,8 @@
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <packaging.type>jar</packaging.type>
         <lombok.version>1.18.24</lombok.version>
+        <feign-httpClienr.version>10.7.4</feign-httpClienr.version>
+        <ribbon.version>2.7.18</ribbon.version>
     </properties>
 
     <repositories>
@@ -45,6 +47,18 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--        Feign 使用 httpClient -->
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>${feign-httpClienr.version}</version>
+            </dependency>
+            <!--        ribbon 点对点直连 和 局部负载均衡 不可用-->
+            <dependency>
+                <groupId>com.netflix.ribbon</groupId>
+                <artifactId>ribbon-loadbalancer</artifactId>
+                <version>${ribbon.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

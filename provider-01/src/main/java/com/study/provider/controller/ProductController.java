@@ -28,6 +28,11 @@ public class ProductController {
 
     @RequestMapping("/getProduction")
     public Production getProduction(@RequestParam Integer id) {
+        try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return productService.getProduction(id);
     }
 
@@ -39,5 +44,11 @@ public class ProductController {
     @RequestMapping("/create")
     public Map create(@RequestBody Production production) {
         return productService.createProduction(production) ;
+    }
+
+    @GetMapping("/selectProduct")
+    public Production selectByProduct(@RequestBody Production production){
+        System.out.println(production);
+        return production;
     }
 }

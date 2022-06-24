@@ -1,7 +1,9 @@
 package com.study.provider.controller;
 
 import com.study.provider.entity.Order;
+import com.study.provider.entity.Production;
 import com.study.provider.service.OrderService;
+import com.study.provider.service.ProductionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,8 @@ public class ProductController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ProductionService productionService;
 
     @RequestMapping("/order")
     public Order order(){
@@ -30,5 +34,10 @@ public class ProductController {
     @RequestMapping("/createProduct")
     public Map createProduct(@RequestBody  Map o){
         return orderService.createProduct(o);
+    }
+
+    @RequestMapping("/selectProduct")
+    public Object selectByProduct(){
+        return productionService.selectByProduct(new Production(1,"ddd",2,11D));
     }
 }
