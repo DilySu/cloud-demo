@@ -1,0 +1,74 @@
+server:
+  port: 9000
+# 注册中心
+eureka:
+  instance:
+    hostname: gateway          # 主机名
+    prefer-ip-address: true   # 使用 IP 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+  client:
+    register-with-eureka: true  # 是否将自己注册到注册中心，默认 true ，集群时要为 true，相互注册
+    fetch-registry: true        # 是否从注册中线获取注册信息，默认为 true
+    service-url:                 # 注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8762/eureka/,http://root:123456@localhost:8761/eureka/
+
+spring:
+  application:
+    name: gateway # 应用名称
+  profiles:
+    active:
+      - "@activated.profile@"
+  cloud:
+      # 路由规则
+    gateway:
+      discovery:
+        locator:
+          # 是否与服务发现组件进行结合，通过 serviceId 转发到具体服务
+          enabled: true                      # 是否开启基于服务发现的路由规则
+          lower-case-service-id: true        # 是否将服务名称转小写
+#      default-filters:
+#        - PrefixPath=/product
+      routes:
+        - id: provider                                            # 路由 ID，唯一
+          uri: lb://provider                                      # 根据注册中心动态路由
+#          uri: http://localhost:7070/                            # 目标 URI，路由到微服务的地址
+          predicates:                                             # 断言（判断条件）
+            # Path
+            - Path=/product/**                                           # 匹配对应的 URL 请求,并追加到 URI 后
+            # Query
+#            - Query=name                                         # 匹配请求参数中包含 name 的请求
+#            - Query=name,abc.+                                   # 匹配请求参数中包含 name 且满足正则表达式 abc. 的请求
+            # Method
+#            - Method=GET                                         # 匹配 GET 请求
+            # Datetime
+#            - After=2022-06-27T16:00:00.000+08:00[Asia/Shanghai] # 匹配中国上海 2022-06-27 16:00:00 后的请求
+            # RemoteAddr
+#            - RemoteAddr=172.16.10.82/0                          # 匹配请求中地址是 172.16.10.82 的请求，/0为子网掩码
+            # Header
+#            - Header=X-Request-Id, \d+                            # 匹配请求头中包含 X-Request-Id 并且其值匹配正则表达式 \d+ 的请求
+
+          # Filters
+          filters:
+            # 将 /gateway/product/list 重写为 /product/list
+#            - RewritePath=/gateway(?<segment>/?.*),$\{segment}
+            # 请求增加前缀
+#            - PrefixPath=/product
+            # 分割前缀 /api/gateway/product/list
+#            - StripPrefix=2
+            # 将 /gateway/product/list 重写为 /product/list
+#            - SetPath=/product/{segment}
+            # 在下游请求中增加 参数 id = 1
+#            - AddRequestParameter=id,1
+            # 在任何情况下，响应状态码设置为888
+#            - SetStatus=888
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1  # 令牌每秒填充数量
+                redis-rate-limiter.burstCapacity: 2  # 令牌桶总容量
+                key-resolver: "#{@ipKeyResolver}"  # 使用 SpEL 表达式按名称引用 bean
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 1

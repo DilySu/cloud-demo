@@ -1,0 +1,102 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:latest
+    container_name: cloud-redis
+    ports:
+      - "26379:6379"
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  erurka-01:
+    build: ./eureka01
+    image: cloud/eureka01:latest
+    container_name: eureka-01
+    ports:
+      - "28761:8761"
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  erurka-02:
+    build: ./eureka02
+    image: cloud/eureka02:latest
+    container_name: eureka-02
+    ports:
+      - "28762:8762"
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  gateway-01:
+    build: ./gateway01
+    image: cloud/gateway01:latest
+    container_name: gateway-01
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  gateway-02:
+    build: ./gateway02
+    image: cloud/gateway02:latest
+    container_name: gateway-02
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  provider-01:
+    build: ./provider01
+    image: cloud/provider01:latest
+    container_name: provider-01
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  provider-02:
+    build: ./provider02
+    image: cloud/provider02:latest
+    container_name: provider-02
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  consumer-eureka:
+    build: ./consumer-eureka
+    image: cloud/consumer-eureka:latest
+    container_name: consumer-eureka
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  consumer-eureka-feign:
+    build: ./consumer-eureka-feign
+    image: cloud/consumer-eureka-feign:latest
+    container_name: consumer-eureka-feign
+    networks:
+      - backend
+    environment:
+      - TZ=Asia/Shanghai
+
+  nginx:
+    image: nginx
+    container_name: cloud-demo-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 28080:8080
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: cloud-demo

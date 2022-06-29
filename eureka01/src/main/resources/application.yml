@@ -1,6 +1,9 @@
 spring:
   application:
     name: eureka                 # 应用名称
+  profiles:
+    active:
+      - "@activated.profile@"
   # 安全认证
   security:
     user:

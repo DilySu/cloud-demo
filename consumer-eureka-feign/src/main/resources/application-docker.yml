@@ -1,9 +1,6 @@
 spring:
   application:
     name: consumer                 # 应用名称
-  profiles:
-    active:
-      - "@activated.profile@"
   # 安全认证
   security:
     user:
@@ -21,7 +18,7 @@ eureka:
     register-with-eureka: true  # 是否将自己注册到注册中心，默认 true ，集群时要为 true，相互注册
     fetch-registry: true        # 是否从注册中线获取注册信息，默认为 true
     service-url: # 注册中心对外暴露的注册地址
-      defaultZone: http://root:123456@localhost:8762/eureka/,http://root:123456@localhost:8761/eureka/
+      defaultZone: http://root:123456@eureka-02:8762/eureka/,http://root:123456@eureka-01:8761/eureka/
   #
   server:
     enable-self-preservation: false # true 开启自我保护， false 关闭自我保护

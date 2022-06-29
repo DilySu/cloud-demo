@@ -12,11 +12,13 @@
         <module>parent</module>
         <module>eureka01</module>
         <module>eureka02</module>
-        <module>provider-01</module>
-        <module>provider-02</module>
+        <module>provider01</module>
+        <module>provider02</module>
         <module>consumer-eureka</module>
         <module>consumer-eureka-feign</module>
         <module>consul</module>
+        <module>gateway01</module>
+        <module>gateway02</module>
     </modules>
 
 </project>

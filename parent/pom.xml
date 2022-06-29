@@ -80,4 +80,54 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <activated.profile>docker</activated.profile>
+                <!-- redis连接 -->
+                <redis.host>cloud-redis</redis.host>
+                <redis.port>6379</redis.port>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>src/main/resources</directory>
+                        <excludes>
+                            <exclude>application-dev.*</exclude>
+                            <exclude>application-preview.*</exclude>
+                            <exclude>application-release.*</exclude>
+                        </excludes>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources-nofilter</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activated.profile>dev</activated.profile>
+                <!-- redis连接 -->
+                <redis.host>localhost</redis.host>
+                <redis.port>6379</redis.port>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>src/main/resources</directory>
+                        <excludes>
+                            <exclude>application-docker.*</exclude>
+                        </excludes>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources-nofilter</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
 </project>
