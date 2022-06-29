@@ -66,6 +66,7 @@ spring:
                 key-resolver: "#{@ipKeyResolver}"  # 使用 SpEL 表达式按名称引用 bean
 
   redis:
+    #    从 maven parent 中 获取属性值
     host: '@redis.host@'
     port: '@redis.port@'
     database: 1

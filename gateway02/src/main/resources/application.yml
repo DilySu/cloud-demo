@@ -18,7 +18,7 @@ spring:
     name: gateway # 应用名称
   profiles:
     active:
-      - "@activated.profile@"
+      - "@activated.profile@" # 从 maven parent 的配置中 获取值
   cloud:
       # 路由规则
     gateway:

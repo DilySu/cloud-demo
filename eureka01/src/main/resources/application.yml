@@ -3,7 +3,7 @@ spring:
     name: eureka                 # 应用名称
   profiles:
     active:
-      - "@activated.profile@"
+      - "@activated.profile@" # 从 maven parent 的配置中 获取值 # 从 maven parent 的配置中 获取值
   # 安全认证
   security:
     user:
