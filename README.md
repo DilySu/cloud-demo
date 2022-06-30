@@ -18,7 +18,7 @@ eureka 注册中心，两个注册中心相互注册，应用名相同，端口�
 
 ### consumer-eureka-feign
 
-向 Eureka 注册的消费者，这里 使用 opfeign 进行服务内调用
+向 Eureka 注册的消费者，这里 使用 openfeign 进行服务内调用
 
 部署时，采用该服务做消费者
 
