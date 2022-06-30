@@ -17,11 +17,6 @@ public class ConsumerFeignApplication {
 //        return new RandomRule();
 //    }
 
-//    @Bean
-//    public Logger.Level getLog(){
-//        return Logger.Level.FULL;
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(ConsumerFeignApplication.class, args);
     }

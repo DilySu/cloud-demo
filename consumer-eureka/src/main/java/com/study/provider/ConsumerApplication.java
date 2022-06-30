@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerApplication {
 
     @Bean
-//    @LoadBalanced
+    @LoadBalanced  // 这个开启后，默认使用 轮询策略
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

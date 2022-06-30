@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <!--    版本控制-->
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +24,7 @@
         <feign-httpClienr.version>10.7.4</feign-httpClienr.version>
         <ribbon.version>2.7.18</ribbon.version>
     </properties>
-
+    <!--maven 仓库-->
     <repositories>
         <repository>
             <id>central</id>
@@ -31,7 +32,7 @@
             <url>https://maven.aliyun.com/repository/public</url>
         </repository>
     </repositories>
-
+    <!--版本统一控制-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -80,10 +81,12 @@
         </plugins>
     </build>
 
+    <!--    打包时按不同环境进行打包-->
     <profiles>
         <profile>
             <id>docker</id>
             <properties>
+                <!--                用于配置文件 属性的统一管理-->
                 <activated.profile>docker</activated.profile>
                 <!-- redis连接 -->
                 <redis.host>cloud-redis</redis.host>

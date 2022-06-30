@@ -41,14 +41,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+        <!--        负载均衡策略-->
         <dependency>
             <groupId>com.netflix.ribbon</groupId>
             <artifactId>ribbon-loadbalancer</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <!--        openFeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <!--        Feign 使用 httpClient -->
         <dependency>

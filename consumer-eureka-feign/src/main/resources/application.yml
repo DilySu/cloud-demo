@@ -47,16 +47,15 @@ server:
 
 # 局部 通过 Feign 到 Provider 的请求 进行 Gzip 压缩
 feign:
-#  compression:
-#    request:
-#      min-request-size: 512  # 配置压缩数据大小的最小阈值，默认 2048
-#      mime-types: text/xml,application/xml,application/json  # 配置压缩文件支持的 MIME TYPE
-#      enabled: true                # 请求是否开启 Gzip 压缩
-#    response:
-#      enabled: true                # 响应是否开启 Gzip 压缩
+  compression:
+    request:
+      min-request-size: 512  # 配置压缩数据大小的最小阈值，默认 2048
+      mime-types: text/xml,application/xml,application/json  # 配置压缩文件支持的 MIME TYPE
+      enabled: true                # 请求是否开启 Gzip 压缩
+    response:
+      enabled: true                # 响应是否开启 Gzip 压缩
   httpclient:
     enabled: true    # 开始 httpClient
-  #  日志局部定义
   client:
     config:
       # 全局 配置请求超时时间
@@ -64,13 +63,9 @@ feign:
         connectTimeout: 1000  # 请求连接超时时间 默认为 1s
         readTimeout: 1000     # 请求处理的超时时间
       # 局部 配置 请求请求超时
-      provider: # 服务名
-        OkToRetryOnAllOperations: true   # 对所有请求都进行重试
-        MaxAutoRetries: 2                # 对当前实例的重复次数
-        MaxAutoRetriesNextServer: 0      # 切换实例的重复次数
-        ConnectTimeOut: 3000             # 请求连接超时时间 默认为 1s
-        ReadTimeOut: 3000                # 请求处理的超时时间
-#  client:
-#    config:
-#      provider: # 需要调用的服务
-#        loggerLevel: FULL
+#      provider: # 服务名
+#        OkToRetryOnAllOperations: true   # 对所有请求都进行重试
+#        MaxAutoRetries: 2                # 对当前实例的重复次数
+#        MaxAutoRetriesNextServer: 0      # 切换实例的重复次数
+#        ConnectTimeOut: 3000             # 请求连接超时时间 默认为 1s
+#        ReadTimeOut: 3000                # 请求处理的超时时间
