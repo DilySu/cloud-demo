@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * Date: 2022-06-28 星期二
  * Time: 14:00
  * Author: Dily_Su
- * Remark:
+ * Remark: 自定义网关过滤器
  */
 //@Configuration
 public class GatewayRoutesConfiguration {
