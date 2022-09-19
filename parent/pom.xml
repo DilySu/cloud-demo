@@ -23,6 +23,7 @@
         <lombok.version>1.18.24</lombok.version>
         <feign-httpClienr.version>10.7.4</feign-httpClienr.version>
         <ribbon.version>2.7.18</ribbon.version>
+        <hystrix.version>2.2.6.RELEASE</hystrix.version>
     </properties>
     <!--maven 仓库-->
     <repositories>
@@ -60,6 +61,12 @@
                 <groupId>com.netflix.ribbon</groupId>
                 <artifactId>ribbon-loadbalancer</artifactId>
                 <version>${ribbon.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${hystrix.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

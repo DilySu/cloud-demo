@@ -19,6 +19,7 @@
         <module>consul</module>
         <module>gateway01</module>
         <module>gateway02</module>
+        <module>hystrix</module>
     </modules>
 
 </project>

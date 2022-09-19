@@ -1,9 +1,7 @@
 package com.study.provider.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,7 +13,7 @@ import java.util.Map;
  * Author: Dily_Su
  * Remark:
  */
-@FeignClient("provider")
+@FeignClient(value = "provider", fallback = ProductionFallback.class)   // fallback 用于熔断
 public interface ProductionService {
     @RequestMapping("/product/getProduction")
     Object getProduction(@RequestParam Integer id);

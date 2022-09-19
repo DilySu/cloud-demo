@@ -43,6 +43,6 @@ public class KeyResolverConfiguration {
      */
     @Bean
     public KeyResolver ipKeyResolver() {
-        return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getRemoteAddress().getHostName()));
+        return exchange -> Mono.just(Objects.requireNonNull(Objects.requireNonNull(exchange.getRequest().getRemoteAddress()).getHostName()));
     }
 }
